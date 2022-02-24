@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="355.0" prefWidth="396.0">
+         <children>
+            <TextField fx:id="nameInputBox" layoutX="211.0" layoutY="178.0" />
+            <Label layoutX="163.0" layoutY="182.0" text="Name:" />
+            <Label layoutX="135.0" layoutY="36.0" text="Label" />
+            <Button fx:id="nameSubmitButton" layoutX="308.0" layoutY="264.0" mnemonicParsing="false" onAction="#nameSubmitButtonPressed" text="Submit" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>javaFXfirstLesson</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    //these are the two separate dependencies we need for our project
+    //dependencies are pieces of code from the internet
+    //you know which ones you need by what your project needs to do
+    //this project is going to need to connect java with mysql so we are using mysql-connector-java
+    //specifically version 8.0.27
+    //so when maven runs it goes to the internet, looks that up, and downloads the source to your project
+    //then you can import it into your code
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>1.10</version>
+        </dependency>
+
+    </dependencies>
+</project>
