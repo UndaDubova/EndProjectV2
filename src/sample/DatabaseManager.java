@@ -1,7 +1,4 @@
 package sample;
-//this is what I mean about the stupid versions, he said to always use "maven project" for these things to work, but whe choosing
-//javaFX we didn't take maven project
-// thats why it didn't work for the other girl too she said she had to wirte a new different code for everything
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,7 +17,6 @@ public class DatabaseManager {
         }
         this.setupDB();
     }
-//it doesnt have the yellow thingy
     private void setupDB() {
 
         String userName = databaseProperties.getString("database.userName");
