@@ -12,6 +12,7 @@
                   <Button layoutX="520.0" layoutY="154.0" mnemonicParsing="false" text="Done" />
                   <TextArea layoutX="14.0" layoutY="14.0" prefHeight="58.0" prefWidth="560.0" text="Import the information about transactions from a bank statement (csv):&#10;Only for SEB bank clients " />
                   <Button fx:id="BrowseForFile" layoutX="26.0" layoutY="97.0" mnemonicParsing="false" onAction="#BrowseForFileClick" text="Browse for file" />
+                  <Label fx:id="filePathLabel" layoutX="170.0" layoutY="89.0" prefHeight="58.0" prefWidth="372.0" text="Chosen file path" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="513.0">

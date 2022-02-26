@@ -17,6 +17,7 @@ import java.util.List;
 
 
 public class TransactionInputController implements Initializable {
+    @FXML private Label filePathLabel;
     @FXML private DatePicker dateInput;
     @FXML private TextField purchaseInput;
     @FXML private TextField priceInput;
@@ -31,6 +32,11 @@ public class TransactionInputController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         databaseManager = new DatabaseManager();
         conn = databaseManager.getConnection();
+
+        currencyInput.getItems().add("USD");
+        currencyInput.getItems().add("GBP");
+        currencyInput.getItems().add("EUR");
+
     }
 
 
@@ -43,19 +49,21 @@ public class TransactionInputController implements Initializable {
 
            String transactionInputFilePath = f.getAbsolutePath();
            System.out.println(transactionInputFilePath);
+
+           filePathLabel.setText(transactionInputFilePath);
        }
 
     }
 
     @FXML
     private void AddButtonPressed(ActionEvent event){
-        LocalDate date = dateInput.getValue();
-        String purchase = purchaseInput.getText();
-        double price = Double.parseDouble(priceInput.getText());
-        System.out.println(date + purchase + price);
-    }
+        LocalDate transactionDate = dateInput.getValue();
+        String transactionPurchase = purchaseInput.getText();
+        double transactionPrice = Double.parseDouble(priceInput.getText());
+        String transactionCurrency = currencyInput.getValue().toString();
 
-    //@FXML private void
+        System.out.println(transactionDate + transactionPurchase + transactionPrice + transactionCurrency);
+    }
 }
 
 
