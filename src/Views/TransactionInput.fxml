@@ -3,13 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TransactionInputController">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TransactionInputController">
     <children>
       <SplitPane dividerPositions="0.37803780378037805" orientation="VERTICAL" prefHeight="524.0" prefWidth="603.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="164.0" prefWidth="466.0">
                <children>
-                  <Button layoutX="520.0" layoutY="154.0" mnemonicParsing="false" text="Done" />
+                  <Button layoutX="520.0" layoutY="154.0" mnemonicParsing="false" onAction="#doneButtonPressed" text="Done" />
                   <TextArea layoutX="14.0" layoutY="14.0" prefHeight="58.0" prefWidth="560.0" text="Import the information about transactions from a bank statement (csv):&#10;Only for SEB bank clients " />
                   <Button fx:id="BrowseForFile" layoutX="26.0" layoutY="97.0" mnemonicParsing="false" onAction="#BrowseForFileClick" text="Browse for file" />
                   <Label fx:id="filePathLabel" layoutX="170.0" layoutY="89.0" prefHeight="58.0" prefWidth="372.0" text="Chosen file path" />

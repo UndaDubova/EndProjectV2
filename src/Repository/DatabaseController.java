@@ -1,4 +1,4 @@
-package sample;
+package Repository;
 
 public class DatabaseController {
 }

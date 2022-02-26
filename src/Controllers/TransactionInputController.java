@@ -1,19 +1,17 @@
-package sample;
+package Controllers;
+import Repository.DatabaseManager;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
-import javafx.util.converter.LocalDateStringConverter;
 
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.time.*;
-import java.util.ResourceBundle;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.ResourceBundle;
 
 
 public class TransactionInputController implements Initializable {
@@ -63,6 +61,15 @@ public class TransactionInputController implements Initializable {
         String transactionCurrency = currencyInput.getValue().toString();
 
         System.out.println(transactionDate + transactionPurchase + transactionPrice + transactionCurrency);
+    }
+
+    @FXML
+    private void doneButtonPressed(ActionEvent event){
+        ArrayList transactionsList = new ArrayList(Transactions.Transactions.TransactionsController.readFile(transactionInputFilePath));
+
+        for(int i = 0; i < transactionsList.size(); i++) {
+            System.out.println(transactionsList.get(i).toString());
+        }
     }
 }
 

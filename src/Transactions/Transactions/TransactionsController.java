@@ -34,8 +34,8 @@ public class TransactionsController {
                     double sum = Double.parseDouble(transactionData[3]);
                     String name = transactionData[4];
                     Category category = Category.UNSORTED;
-                    //if - earnings vs savings - depending on C or D in csv
                     TransactionType type = TransactionType.EARNINGS;
+                    //if -  vs savings - depending on C or D in csv
                     Id++;
                     Transactions transaction = new Transactions(Id, date, currency, sum, name, category, type);
                     transactions.add(transaction);
