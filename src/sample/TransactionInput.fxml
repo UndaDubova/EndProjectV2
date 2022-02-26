@@ -16,18 +16,18 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="513.0">
                <children>
-                  <DatePicker fx:id="Date" layoutX="121.0" layoutY="67.0" onAction="#AddDate" />
+                  <DatePicker fx:id="dateInput" layoutX="121.0" layoutY="67.0" />
                   <Label layoutX="61.0" layoutY="71.0" text="Date:" />
                   <Label layoutX="50.0" layoutY="119.0" text="Purchase:" />
                   <Label layoutX="61.0" layoutY="161.0" text="Price:" />
                   <Label layoutX="50.0" layoutY="205.0" text="Currency:" />
-                  <TextField fx:id="Purchase" layoutX="122.0" layoutY="115.0" onAction="#AddPurchase" />
-                  <TextField fx:id="Price" layoutX="122.0" layoutY="157.0" onAction="#AddPrice" />
-                  <ChoiceBox layoutX="121.0" layoutY="201.0" prefWidth="150.0" />
+                  <TextField fx:id="purchaseInput" layoutX="122.0" layoutY="115.0" />
+                  <TextField fx:id="priceInput" layoutX="122.0" layoutY="157.0" />
+                  <ChoiceBox fx:id="currencyInput" layoutX="121.0" layoutY="201.0" prefWidth="150.0" />
                   <TextArea layoutX="10.0" layoutY="6.0" prefHeight="38.0" prefWidth="560.0" text="Or fill out the information about your transactions manually: " />
                   <ButtonBar layoutX="282.0" layoutY="256.0" prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                      <Button mnemonicParsing="false" text="Add" />
+                      <Button fx:id="addButton" mnemonicParsing="false" onAction="#AddButtonPressed" text="Add" />
                         <Button mnemonicParsing="false" text="Cancel" />
                         <Button mnemonicParsing="false" text="Done" />
                     </buttons>
