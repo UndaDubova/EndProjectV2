@@ -11,6 +11,7 @@ public enum Category {
     UTILITIES,
     BANKINGFEES,
     SAVINGS,
+    EARNINGS,
     UNSORTED
 
 }

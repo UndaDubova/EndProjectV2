@@ -8,8 +8,6 @@ import java.util.ArrayList;
 public class TransactionsController {
 
     // Metode "readFile" nolasa CSV failu, atdod atpakaļ arraylisti ar transakcijām.
-    // problēma - ID (kā salikt vienotu ID gan no CSV faila nolasītajām transakcijām, gan pašu pievienotajām?)
-    // Kods viena lielā blokā- mēģinot sadalīt sīkākās metodēs nekas vairs neiet
 
     public static ArrayList readFile(String filename) {
         ArrayList transactions = new ArrayList();
@@ -34,10 +32,8 @@ public class TransactionsController {
                     double sum = Double.parseDouble(transactionData[3]);
                     String name = transactionData[4];
                     Category category = Category.UNSORTED;
-                    TransactionType type = TransactionType.EARNINGS;
-                    //if -  vs savings - depending on C or D in csv
                     Id++;
-                    Transactions transaction = new Transactions(Id, date, currency, sum, name, category, type);
+                    Transactions transaction = new Transactions(Id, date, currency, sum, name, category);
                     transactions.add(transaction);
 
                 }
@@ -46,6 +42,21 @@ public class TransactionsController {
             e.printStackTrace();
         }
         return transactions;
+    }
+    public static ArrayList readInput(String dateInput, String currencyInput, double priceInput, String placeInput) {
+        ArrayList currentTransactions = new ArrayList();
+                    String date = dateInput;
+                    String currency = currencyInput;
+                    double price = priceInput;
+                    String place = placeInput ;
+                    Category category = Category.UNSORTED;
+                    //if -  vs savings - depending on C or D in csv
+                     int Id = 1;
+                    Transactions transaction = new Transactions(Id, date, currency, price, place, category);
+                    currentTransactions.add(transaction);
+            return currentTransactions;
+                }
+
     }
    /* public static void changeCategory(int id,Category category){
         for(int i = 0; i < transactions.size(); i++) {
@@ -57,4 +68,3 @@ public class TransactionsController {
 //metode priekš kategoriju salikšanas
     // metodes priekš skatīšās -
     // javafx - graphs and reports
-}

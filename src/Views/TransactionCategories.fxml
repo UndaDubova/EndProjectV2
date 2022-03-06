@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controllers.TransactionCategoriesController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="14.0" layoutY="5.0" prefHeight="18.0" prefWidth="459.0" text="Please choose the categories for your recently added transactions: " />
+      <TableView fx:id="tableView" layoutX="15.0" layoutY="37.0" prefHeight="359.0" prefWidth="570.0">
+        <columns>
+          <TableColumn fx:id="idColumn" prefWidth="36.39999580383301" text="Id" />
+            <TableColumn fx:id="dateColumn" prefWidth="86.39998626708984" text="date" />
+            <TableColumn fx:id="currencyColumn" prefWidth="59.600006103515625" text="currency" />
+            <TableColumn fx:id="priceColumn" prefWidth="56.60003662109375" text="price" />
+          <TableColumn fx:id="purchaseColumn" prefWidth="226.79998779296875" text="purchase" />
+            <TableColumn fx:id="categoryColumn" prefWidth="102.80001831054688" text="category" />
+        </columns>
+      </TableView>
+   </children>
 </AnchorPane>

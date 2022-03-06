@@ -7,30 +7,30 @@
     <children>
       <SplitPane dividerPositions="0.37803780378037805" orientation="VERTICAL" prefHeight="524.0" prefWidth="603.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="164.0" prefWidth="466.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="164.0" prefWidth="466.0" style="-fx-background-color: E8FFFF;">
                <children>
                   <Button layoutX="520.0" layoutY="154.0" mnemonicParsing="false" onAction="#doneButtonPressed" text="Done" />
                   <TextArea layoutX="14.0" layoutY="14.0" prefHeight="58.0" prefWidth="560.0" text="Import the information about transactions from a bank statement (csv):&#10;Only for SEB bank clients " />
-                  <Button fx:id="BrowseForFile" layoutX="26.0" layoutY="97.0" mnemonicParsing="false" onAction="#BrowseForFileClick" text="Browse for file" />
-                  <Label fx:id="filePathLabel" layoutX="170.0" layoutY="89.0" prefHeight="58.0" prefWidth="372.0" text="Chosen file path" />
+                  <Button fx:id="BrowseForFile" layoutX="14.0" layoutY="128.0" mnemonicParsing="false" onAction="#BrowseForFileClick" text="Browse for file" />
+                  <Label fx:id="filePathLabel" layoutX="14.0" layoutY="78.0" prefHeight="38.0" prefWidth="560.0" text="Chosen file path" textAlignment="CENTER" textFill="#213e3b" wrapText="true" />
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="513.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="322.0" prefWidth="513.0" style="-fx-background-color: E8FFFF;">
                <children>
                   <DatePicker fx:id="dateInput" layoutX="121.0" layoutY="67.0" />
-                  <Label layoutX="61.0" layoutY="71.0" text="Date:" />
-                  <Label layoutX="50.0" layoutY="119.0" text="Purchase:" />
-                  <Label layoutX="61.0" layoutY="161.0" text="Price:" />
-                  <Label layoutX="50.0" layoutY="205.0" text="Currency:" />
+                  <Label layoutX="61.0" layoutY="71.0" text="Date:" textFill="#213e3b" />
+                  <Label layoutX="50.0" layoutY="119.0" text="Purchase:" textFill="#213e3b" />
+                  <Label layoutX="61.0" layoutY="161.0" text="Price:" textFill="#213e3b" />
+                  <Label layoutX="50.0" layoutY="205.0" text="Currency:" textFill="#213e3b" />
                   <TextField fx:id="purchaseInput" layoutX="122.0" layoutY="115.0" />
                   <TextField fx:id="priceInput" layoutX="122.0" layoutY="157.0" />
                   <ChoiceBox fx:id="currencyInput" layoutX="121.0" layoutY="201.0" prefWidth="150.0" />
                   <TextArea layoutX="10.0" layoutY="6.0" prefHeight="38.0" prefWidth="560.0" text="Or fill out the information about your transactions manually: " />
                   <ButtonBar layoutX="282.0" layoutY="256.0" prefHeight="40.0" prefWidth="200.0">
                     <buttons>
-                      <Button fx:id="addButton" mnemonicParsing="false" onAction="#AddButtonPressed" text="Add" />
-                        <Button mnemonicParsing="false" text="Cancel" />
-                        <Button mnemonicParsing="false" text="Done" />
+                      <Button fx:id="addButton" mnemonicParsing="false" onAction="#AddButtonPressed" style="-fx-background-color: 41AEA9;" text="Add" />
+                        <Button cancelButton="true" mnemonicParsing="false" style="-fx-background-color: 41AEA9;" text="Cancel" />
+                        <Button mnemonicParsing="false" onAction="#doneButton2Pressed" style="-fx-background-color: 41AEA9;" text="Done" />
                     </buttons>
                   </ButtonBar>
                </children>

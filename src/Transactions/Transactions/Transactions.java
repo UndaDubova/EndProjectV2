@@ -7,28 +7,18 @@ public class Transactions {
     private Double sum;
     private String name;
     private Category category;
-    private TransactionType type;
 
-    public Transactions() {
-    }
+    public Transactions() {}
 
-    public Transactions(int Id, String date, String currency, Double sum, String name, Category category, TransactionType type) {
+    public Transactions(int Id, String date, String currency, Double sum, String name, Category category) {
         this.Id = Id;
         this.date = date;
         this.currency = currency;
         this.sum = sum;
         this.name = name;
         this.category = category;
-        this.type = type;
     }
 
-    public TransactionType getType() {
-        return type;
-    }
-
-    public void setType(TransactionType type) {
-        this.type = type;
-    }
 
     public int getId() {
         return Id;

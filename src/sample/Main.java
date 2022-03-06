@@ -26,7 +26,7 @@ public class Main extends Application {
         ArrayList transactionsList = new ArrayList(Transactions.Transactions.TransactionsController.readFile(filename));
 
         for (int i = 0; i < transactionsList.size(); i++) {
-            System.out.println(transactionsList.get(i).toString());
+            //System.out.println(transactionsList.get(i).toString());
         }
     }
 }
