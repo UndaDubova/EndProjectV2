@@ -51,6 +51,7 @@ public class TransactionInputController implements Initializable {
 
 
     private TableView tableView = new TableView();
+
     ObservableList<TransactionsForTable>transactionsForTableList;
 
 
@@ -70,11 +71,12 @@ public class TransactionInputController implements Initializable {
         currencyInput.getItems().add("GBP");
         currencyInput.getItems().add("EUR");
         // for the tableview
-
-        TableColumn dateColumn = new TableColumn("Datele");
+       /* TableColumn dateColumn = new TableColumn("Datele");
         TableColumn currencyColumn = new TableColumn("Currency");
         TableColumn priceColumn = new TableColumn("Price");
-        TableColumn purchaseColumn = new TableColumn("Purchase");
+        TableColumn purchaseColumn = new TableColumn("Purchase");*/
+
+
         this.tableView.getColumns().addAll(new Object[]{dateColumn, currencyColumn, priceColumn, purchaseColumn});
 
         //For the observableList in transaction category window (date, currency, sum, name)
@@ -141,6 +143,7 @@ public class TransactionInputController implements Initializable {
 
     @FXML
     private void doneButton2Pressed(ActionEvent event){
+
         loadScene(event, "Views/TransactionCategories.fxml", 900, 475);
         }
 
