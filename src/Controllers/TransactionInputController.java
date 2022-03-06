@@ -2,6 +2,7 @@ package Controllers;
 import Repository.DatabaseManager;
 import Transactions.Transactions.*;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,11 +12,9 @@ import javafx.scene.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -43,16 +42,15 @@ public class TransactionInputController implements Initializable {
     String transactionInputFilePath;
 
 // For the transaction categories view
-    //table columns
-    @FXML private TableView<TransactionsForTable> tableView;
     @FXML private TableColumn<Transactions,String>dateColumn;
     @FXML private TableColumn<Transactions,String>currencyColumn;
     @FXML private TableColumn<Transactions,Double>priceColumn;
     @FXML private TableColumn<Transactions,String>purchaseColumn;
     @FXML private TableColumn<Transactions,String>categoryColumn;
-
     @FXML private ComboBox categoryChooser;
-    //observable list
+
+
+    private TableView tableView = new TableView();
     ObservableList<TransactionsForTable>transactionsForTableList;
 
 
@@ -71,7 +69,13 @@ public class TransactionInputController implements Initializable {
         currencyInput.getItems().add("USD");
         currencyInput.getItems().add("GBP");
         currencyInput.getItems().add("EUR");
+        // for the tableview
 
+        TableColumn dateColumn = new TableColumn("Datele");
+        TableColumn currencyColumn = new TableColumn("Currency");
+        TableColumn priceColumn = new TableColumn("Price");
+        TableColumn purchaseColumn = new TableColumn("Purchase");
+        this.tableView.getColumns().addAll(new Object[]{dateColumn, currencyColumn, priceColumn, purchaseColumn});
 
         //For the observableList in transaction category window (date, currency, sum, name)
         transactionsForTableList = FXCollections.observableArrayList(
@@ -83,6 +87,11 @@ public class TransactionInputController implements Initializable {
         new TransactionsForTable("22.03.23", "USD", 3d, "Jam")
         );
 
+        dateColumn.setCellValueFactory(new PropertyValueFactory("firstName"));
+        currencyColumn.setCellValueFactory(new PropertyValueFactory("lastName"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory("email"));
+        purchaseColumn.setCellValueFactory(new PropertyValueFactory("remark"));
+        this.tableView.setItems(this.transactionsForTableList);
 
 
     }
