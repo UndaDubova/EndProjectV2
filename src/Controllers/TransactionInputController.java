@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableList.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,9 +31,6 @@ public class TransactionInputController implements Initializable {
     private Scene scene;
     private Parent root;
 
-    //ID of the next element to be added
-    //int nextTransactionID;
-
 // For the transaction input view
     @FXML private Label filePathLabel;
     @FXML private DatePicker dateInput;
@@ -42,23 +40,29 @@ public class TransactionInputController implements Initializable {
     String transactionInputFilePath;
 
 // For the transaction categories view
-    @FXML private TableColumn<Transactions,String>dateColumn;
-    @FXML private TableColumn<Transactions,String>currencyColumn;
-    @FXML private TableColumn<Transactions,Double>priceColumn;
-    @FXML private TableColumn<Transactions,String>purchaseColumn;
-    @FXML private TableColumn<Transactions,String>categoryColumn;
+
+    @FXML private TableColumn<TransactionsForTable,String>dateColumn;
+    @FXML private TableColumn<TransactionsForTable,String>currencyColumn;
+    @FXML private TableColumn<TransactionsForTable,Double>priceColumn;
+    @FXML private TableColumn<TransactionsForTable,String>purchaseColumn;
+    @FXML private TableColumn<TransactionsForTable,String>categoryColumn;
     @FXML private ComboBox categoryChooser;
 
+    private TransactionsForTableList transList;
 
-    private TableView tableView = new TableView();
-
-    ObservableList<TransactionsForTable>transactionsForTableList;
-
+    @FXML private TableView<TransactionsForTable> tableView;
 
     DatabaseManager databaseManager;
     Connection conn;
 
-    public TransactionInputController(){}
+    public TransactionInputController(){
+        transList = new TransactionsForTableList();
+        TransactionsForTable newTrans1 = new TransactionsForTable("22.03.23", "GBP", 34d, "Socks");
+        TransactionsForTable newTrans2 = new TransactionsForTable("22.03.23", "EUR", 34d, "Socks");
+        transList.addTransactionsForTable(newTrans1);
+        transList.addTransactionsForTable(newTrans2);
+
+    }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //nextTransactionID = 0;
@@ -70,32 +74,16 @@ public class TransactionInputController implements Initializable {
         currencyInput.getItems().add("USD");
         currencyInput.getItems().add("GBP");
         currencyInput.getItems().add("EUR");
-        // for the tableview
-       /* TableColumn dateColumn = new TableColumn("Datele");
-        TableColumn currencyColumn = new TableColumn("Currency");
-        TableColumn priceColumn = new TableColumn("Price");
-        TableColumn purchaseColumn = new TableColumn("Purchase");*/
 
 
-        this.tableView.getColumns().addAll(new Object[]{dateColumn, currencyColumn, priceColumn, purchaseColumn});
 
-        //For the observableList in transaction category window (date, currency, sum, name)
-        transactionsForTableList = FXCollections.observableArrayList(
-
-        new TransactionsForTable("22.03.23", "GBP", 34d, "Socks"),
-        new TransactionsForTable("22.03.23", "EUR", 34d, "Socks"),
-        new TransactionsForTable("22.03.23", "GBP", 31d, "Socks"),
-        new TransactionsForTable("22.03.23", "GBP", 34d, "ducks"),
-        new TransactionsForTable("22.03.23", "USD", 3d, "Jam")
-        );
-
-        dateColumn.setCellValueFactory(new PropertyValueFactory("firstName"));
-        currencyColumn.setCellValueFactory(new PropertyValueFactory("lastName"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory("email"));
-        purchaseColumn.setCellValueFactory(new PropertyValueFactory("remark"));
-        this.tableView.setItems(this.transactionsForTableList);
-
-
+        if(dateColumn != null) {        //when the controller runs sometimes dateColumn isnt in the scene, so we need to check if it exists first
+            dateColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("date"));
+            currencyColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("currency"));
+            priceColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, Double>("price"));
+            purchaseColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("purchase"));
+            tableView.setItems(transList.getAllTransactionForTable());
+        }
     }
 
 
@@ -120,13 +108,9 @@ public class TransactionInputController implements Initializable {
         double transactionPrice = Double.parseDouble(priceInput.getText());
         String transactionCurrency = currencyInput.getValue().toString();
 
-        //int transactionID = nextTransactionID;
-        //nextTransactionID++;
-        //System.out.println(nextTransactionID);
 
 
         System.out.println(transactionDate + transactionPurchase + transactionPrice + transactionCurrency);
-        //loadScene(event, "Views/TransactionCategories.fxml", 900, 475);
     }
 
     @FXML

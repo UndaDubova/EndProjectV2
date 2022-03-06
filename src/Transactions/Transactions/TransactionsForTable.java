@@ -31,16 +31,16 @@ public class TransactionsForTable {
         Id = id;
     }
 
-    public SimpleStringProperty getDate() {
-        return date;
+    public String getDate() {
+        return date.get();
     }
 
     public void setDate(SimpleStringProperty date) {
         this.date = date;
     }
 
-    public SimpleStringProperty getCurrency() {
-        return currency;
+    public String getCurrency() {
+        return currency.get();
     }
 
     public void setCurrency(SimpleStringProperty currency) {
@@ -55,8 +55,8 @@ public class TransactionsForTable {
         this.sum = sum;
     }
 
-    public SimpleStringProperty getPurchase() {
-        return purchase;
+    public String getPurchase() {
+        return purchase.get();
     }
 
     public void setName(SimpleStringProperty purchase) {

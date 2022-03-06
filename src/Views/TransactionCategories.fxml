@@ -3,12 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.TransactionInputController" >
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <Label layoutX="14.0" layoutY="5.0" prefHeight="18.0" prefWidth="459.0" text="Please choose the categories for your recently added transactions: " />
       <TableView fx:id="tableView" layoutX="15.0" layoutY="37.0" prefHeight="359.0" prefWidth="570.0">
         <columns>
-          <TableColumn fx:id="idColumn" prefWidth="36.39999580383301" text="Id" />
             <TableColumn fx:id="dateColumn" prefWidth="86.39998626708984" text="date" />
             <TableColumn fx:id="currencyColumn" prefWidth="72.0" text="currency" />
             <TableColumn fx:id="priceColumn" prefWidth="68.0" text="price" />
