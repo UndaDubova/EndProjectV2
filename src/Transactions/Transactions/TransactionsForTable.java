@@ -6,19 +6,19 @@ public class TransactionsForTable {
     private int Id;
     private SimpleStringProperty date;
     private SimpleStringProperty currency;
-    private Double sum;
+    private Double price;
     private SimpleStringProperty purchase;
-    private ComboBox category;
+    private ComboBox categoryChooser;
 
     public TransactionsForTable() {}
 
-    public TransactionsForTable(String date, String currency, Double sum, String purchase) {
+    public TransactionsForTable(String date, String currency, Double price, String purchase) {
         this.Id = 1;
         this.date = new SimpleStringProperty(date);
         this.currency = new SimpleStringProperty(currency);
-        this.sum = sum;
+        this.price = price;
         this.purchase = new SimpleStringProperty(purchase);
-        this.category = new ComboBox();
+        this.categoryChooser = new ComboBox();
     }
 
 
@@ -47,12 +47,12 @@ public class TransactionsForTable {
         this.currency = currency;
     }
 
-    public Double getSum() {
-        return sum;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setSum(Double sum) {
-        this.sum = sum;
+    public void setPrice(Double sum) {
+        this.price = price;
     }
 
     public String getPurchase() {
@@ -63,12 +63,12 @@ public class TransactionsForTable {
         this.purchase = purchase;
     }
 
-    public ComboBox getCategory() {
-        return category;
+    public ComboBox getCategoryChooser() {
+        return categoryChooser;
     }
 
-    public void setCategory(ComboBox category) {
-        this.category = category;
+    public void setCategoryChooser(ComboBox categoryChooser) {
+        this.categoryChooser = categoryChooser;
     }
 
     @Override
@@ -77,9 +77,9 @@ public class TransactionsForTable {
                 "Id: " + Id +
                         ", date: '" + date +
                         ", currency: '" + currency +
-                        ", sum: " + sum +
+                        ", sum: " + price +
                         ", purchase: " + purchase  +
-                        ", category: " + category +
+                        ", category: " + categoryChooser +
                         '}';
     }
 }

@@ -24,7 +24,9 @@ import java.time.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
-
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.cell.ComboBoxTableCell;
+import javafx.util.converter.DefaultStringConverter;
 
 public class TransactionInputController implements Initializable {
     private Stage stage;
@@ -51,6 +53,9 @@ public class TransactionInputController implements Initializable {
     private TransactionsForTableList transList;
 
     @FXML private TableView<TransactionsForTable> tableView;
+    //This is from tutorial nr 2 didn't work:
+    //private ObservableList<String> categoriesList;
+
 
     DatabaseManager databaseManager;
     Connection conn;
@@ -82,8 +87,19 @@ public class TransactionInputController implements Initializable {
             currencyColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("currency"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, Double>("price"));
             purchaseColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("purchase"));
+            categoryChooser.setCellValueFactory(new PropertyValueFactory<TransactionsForTable,ComboBox>("categoryChooser"));
+
+            //this is from tutorial nr 2 - didn't work
+           // categoriesList = FXCollections.observableArrayList();
+           // categoriesList.add("Food");
+           // categoriesList.add("Clothes");
+            //categoriesList.add("Housing");
+
             tableView.setItems(transList.getAllTransactionForTable());
         }
+        //this is from tutorial nr 2 - didn't work
+        //categoryColumn.setCellValueFactory(new PropertyValueFactory<>("categoryColumn"));
+        //categoryColumn.setCellValueFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(),categoriesList));
     }
 
 
