@@ -75,15 +75,12 @@ public class TransactionInputController implements Initializable {
         categoriesList.add("Earnings");
         categoriesList.add("Unsorted");
 
-
-
         transList = new TransactionsForTableList();
 
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //nextTransactionID = 0;
-        //write code to overwrite this with the highest transaction ID in the database later
+
         databaseManager = new DatabaseManager();
         conn = databaseManager.getConnection();
 
@@ -94,7 +91,7 @@ public class TransactionInputController implements Initializable {
 
 
 
-        if(dateColumn != null) {        //when the controller runs sometimes dateColumn isnt in the scene, so we need to check if it exists first
+        if(dateColumn != null) {
             dateColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("date"));
             currencyColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("currency"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, Double>("price"));

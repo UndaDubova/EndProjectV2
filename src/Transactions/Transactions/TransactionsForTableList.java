@@ -13,7 +13,7 @@ public class TransactionsForTableList {  //create a class for holding lists of t
         this.allTransactionsForTable.add(newTransactionForTable);
     }
 
-
+//methods to look for/update/delete transactions in case we want to add these possibilities (for now unused)
     public TransactionsForTable lookupTransactionForTable(int TransactionForTableId){
         for(int i = 0; i < this.allTransactionsForTable.size(); i++){
             if(this.allTransactionsForTable.get(i).getId() == TransactionForTableId){
@@ -23,17 +23,9 @@ public class TransactionsForTableList {  //create a class for holding lists of t
         return null;    //no TransactionForTable found
     }
 
-
-
-    /**
-     * @param index the index of the TransactionForTable to update
-     * @param selectedTransactionForTable the selected TransactionForTable
-     */
     public void updateTransactionForTable(int index, TransactionsForTable selectedTransactionForTable){
         allTransactionsForTable.set(index, selectedTransactionForTable);
     }
-
-
 
     public boolean deleteTransactionForTable(TransactionsForTable selectedTransactionForTable){
         for(int i = 0; i < allTransactionsForTable.size(); i++){
@@ -45,7 +37,8 @@ public class TransactionsForTableList {  //create a class for holding lists of t
         return false;
     }
 
-    //I don't need to be able to delete them btw
+
+
     public ObservableList<TransactionsForTable> getAllTransactionForTable(){
         return allTransactionsForTable;
     }
