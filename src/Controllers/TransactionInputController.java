@@ -170,7 +170,7 @@ public class TransactionInputController implements Initializable {
         }
 
         loadScene(event, "Views/TransactionCategories.fxml", 900, 475);
-        System.out.println("Here2");
+
 
     }
 
