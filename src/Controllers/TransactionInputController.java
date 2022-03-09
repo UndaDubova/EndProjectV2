@@ -141,7 +141,6 @@ public class TransactionInputController implements Initializable {
         System.out.println(transactionInputFilePath);
         String line = "";
         String splitBy = ";";
-        System.out.println("here I am I am");
         try {
 
             BufferedReader br = new BufferedReader(new FileReader(transactionInputFilePath));
@@ -159,18 +158,15 @@ public class TransactionInputController implements Initializable {
                     String currency = transactionData[2];
                     double price = Double.parseDouble(transactionData[3]);
                     String purchase = transactionData[4];
-                    Category category = Category.UNSORTED;
-                    Id++;
                     TransactionsForTable transaction = new TransactionsForTable(date, currency, price, purchase, categoriesList);
                     transList.addTransactionsForTable(transaction);
-                    System.out.println("here here here");
                     System.out.println(transList.toString());
 
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Here I am");
+            System.out.println("Something went wrong in reading the CSV file, please try again");
         }
 
         loadScene(event, "Views/TransactionCategories.fxml", 900, 475);
