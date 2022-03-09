@@ -2,6 +2,8 @@ package Controllers;
 import Repository.DatabaseManager;
 import Transactions.Transactions.*;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +18,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -47,14 +51,14 @@ public class TransactionInputController implements Initializable {
     @FXML private TableColumn<TransactionsForTable,String>currencyColumn;
     @FXML private TableColumn<TransactionsForTable,Double>priceColumn;
     @FXML private TableColumn<TransactionsForTable,String>purchaseColumn;
-    @FXML private TableColumn<TransactionsForTable,String>categoryColumn;
-    @FXML private ComboBox categoryChooser;
+    @FXML private TableColumn<TransactionsForTable,String>categoryChooser;
+
 
     private TransactionsForTableList transList;
 
     @FXML private TableView<TransactionsForTable> tableView;
-    //This is from tutorial nr 2 didn't work:
-    //private ObservableList<String> categoriesList;
+
+    ObservableList<String> categoriesList;
 
 
     DatabaseManager databaseManager;
@@ -62,8 +66,8 @@ public class TransactionInputController implements Initializable {
 
     public TransactionInputController(){
         transList = new TransactionsForTableList();
-        TransactionsForTable newTrans1 = new TransactionsForTable("22.03.23", "GBP", 34d, "Socks");
-        TransactionsForTable newTrans2 = new TransactionsForTable("22.03.23", "EUR", 34d, "Socks");
+        TransactionsForTable newTrans1 = new TransactionsForTable("22.03.23", "GBP", 34d, "Socks",categoriesList);
+        TransactionsForTable newTrans2 = new TransactionsForTable("22.03.23", "EUR", 34d, "Socks",categoriesList);
         transList.addTransactionsForTable(newTrans1);
         transList.addTransactionsForTable(newTrans2);
 
@@ -87,19 +91,26 @@ public class TransactionInputController implements Initializable {
             currencyColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("currency"));
             priceColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, Double>("price"));
             purchaseColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("purchase"));
-            categoryChooser.setCellValueFactory(new PropertyValueFactory<TransactionsForTable,ComboBox>("categoryChooser"));
+            categoryChooser.setCellValueFactory(new PropertyValueFactory<TransactionsForTable,String>("categoryChooser"));
 
-            //this is from tutorial nr 2 - didn't work
-           // categoriesList = FXCollections.observableArrayList();
-           // categoriesList.add("Food");
-           // categoriesList.add("Clothes");
-            //categoriesList.add("Housing");
+
+           categoriesList = FXCollections.observableArrayList();
+            categoriesList.add("Food");
+            categoriesList.add("Clothes");
+            categoriesList.add("Household");
+            categoriesList.add("Food");
+            categoriesList.add("Healthcare");
+            categoriesList.add("Housing");
+            categoriesList.add("Entertainment");
+            categoriesList.add("Transportation");
+            categoriesList.add("Housing");
+            categoriesList.add("Utilities");
+            categoriesList.add("Savings");
+            categoriesList.add("Earnings");
+            categoriesList.add("Unsorted");
 
             tableView.setItems(transList.getAllTransactionForTable());
         }
-        //this is from tutorial nr 2 - didn't work
-        //categoryColumn.setCellValueFactory(new PropertyValueFactory<>("categoryColumn"));
-        //categoryColumn.setCellValueFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(),categoriesList));
     }
 
 

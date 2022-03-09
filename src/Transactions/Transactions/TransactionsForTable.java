@@ -1,5 +1,6 @@
 package Transactions.Transactions;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 
 public class TransactionsForTable {
@@ -12,13 +13,13 @@ public class TransactionsForTable {
 
     public TransactionsForTable() {}
 
-    public TransactionsForTable(String date, String currency, Double price, String purchase) {
+    public TransactionsForTable(String date, String currency, Double price, String purchase, ObservableList data) {
         this.Id = 1;
         this.date = new SimpleStringProperty(date);
         this.currency = new SimpleStringProperty(currency);
         this.price = price;
         this.purchase = new SimpleStringProperty(purchase);
-        this.categoryChooser = new ComboBox();
+        this.categoryChooser = new ComboBox(data);
     }
 
 
