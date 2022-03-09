@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="14.0" layoutY="5.0" prefHeight="18.0" prefWidth="459.0" text="Please choose the categories for your recently added transactions: " />
       <TableView fx:id="tableView" layoutX="15.0" layoutY="37.0" prefHeight="359.0" prefWidth="570.0">
@@ -12,7 +12,7 @@
             <TableColumn fx:id="currencyColumn" prefWidth="72.0" text="currency" />
             <TableColumn fx:id="priceColumn" prefWidth="68.0" text="price" />
           <TableColumn fx:id="purchaseColumn" prefWidth="204.20001220703125" text="purchase" />
-            <TableColumn fx:id="categoryColumn" prefWidth="102.80001831054688" text="category" />
+            <TableColumn fx:id="categoryChooser" prefWidth="102.80001831054688" text="category" />
         </columns>
       </TableView>
    </children>

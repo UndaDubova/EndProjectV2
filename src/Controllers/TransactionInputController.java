@@ -61,12 +61,27 @@ public class TransactionInputController implements Initializable {
     ObservableList<String> categoriesList;
 
 
+
     DatabaseManager databaseManager;
     Connection conn;
 
     public TransactionInputController(){
+
+        categoriesList = FXCollections.observableArrayList();
+        categoriesList.add("Food");
+        categoriesList.add("Clothes");
+        categoriesList.add("Household");
+        categoriesList.add("Healthcare");
+        categoriesList.add("Housing");
+        categoriesList.add("Entertainment");
+        categoriesList.add("Transportation");
+        categoriesList.add("Utilities");
+        categoriesList.add("Savings");
+        categoriesList.add("Earnings");
+        categoriesList.add("Unsorted");
+
         transList = new TransactionsForTableList();
-        TransactionsForTable newTrans1 = new TransactionsForTable("22.03.23", "GBP", 34d, "Socks",categoriesList);
+        TransactionsForTable newTrans1 = new TransactionsForTable("22.03.23", "GBP", 34d, "Socks",categoriesList("Colthes","Food"));
         TransactionsForTable newTrans2 = new TransactionsForTable("22.03.23", "EUR", 34d, "Socks",categoriesList);
         transList.addTransactionsForTable(newTrans1);
         transList.addTransactionsForTable(newTrans2);
@@ -93,21 +108,6 @@ public class TransactionInputController implements Initializable {
             purchaseColumn.setCellValueFactory(new PropertyValueFactory<TransactionsForTable, String>("purchase"));
             categoryChooser.setCellValueFactory(new PropertyValueFactory<TransactionsForTable,String>("categoryChooser"));
 
-
-           categoriesList = FXCollections.observableArrayList();
-            categoriesList.add("Food");
-            categoriesList.add("Clothes");
-            categoriesList.add("Household");
-            categoriesList.add("Food");
-            categoriesList.add("Healthcare");
-            categoriesList.add("Housing");
-            categoriesList.add("Entertainment");
-            categoriesList.add("Transportation");
-            categoriesList.add("Housing");
-            categoriesList.add("Utilities");
-            categoriesList.add("Savings");
-            categoriesList.add("Earnings");
-            categoriesList.add("Unsorted");
 
             tableView.setItems(transList.getAllTransactionForTable());
         }
