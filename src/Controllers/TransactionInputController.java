@@ -1,13 +1,11 @@
 package Controllers;
 import Repository.DatabaseManager;
 import Transactions.Transactions.*;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableList.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,18 +17,15 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.awt.*;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.time.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.cell.ComboBoxTableCell;
-import javafx.util.converter.DefaultStringConverter;
+
 
 public class TransactionInputController implements Initializable {
     private Stage stage;
@@ -83,10 +78,6 @@ public class TransactionInputController implements Initializable {
 
 
         transList = new TransactionsForTableList();
-        TransactionsForTable newTrans1 = new TransactionsForTable("22.03.23", "GBP", 34d, "Socks",categoriesList);
-        TransactionsForTable newTrans2 = new TransactionsForTable("22.03.23", "EUR", 34d, "Socks",categoriesList);
-        transList.addTransactionsForTable(newTrans1);
-        transList.addTransactionsForTable(newTrans2);
 
     }
 
@@ -124,7 +115,6 @@ public class TransactionInputController implements Initializable {
        if(f!= null){
 
            transactionInputFilePath = f.getAbsolutePath();
-           System.out.println(transactionInputFilePath);
            filePathLabel.setText(transactionInputFilePath);
        }
 
@@ -132,26 +122,63 @@ public class TransactionInputController implements Initializable {
 
     @FXML
     private void AddButtonPressed(ActionEvent event){
-        LocalDate transactionDate = dateInput.getValue();
+
+
+    try {
+        String transactionDate = dateInput.getValue().toString();
         String transactionPurchase = purchaseInput.getText();
-        double transactionPrice = Double.parseDouble(priceInput.getText());
+        Double transactionPrice = Double.parseDouble(priceInput.getText());
         String transactionCurrency = currencyInput.getValue().toString();
+        TransactionsForTable newTransaction = new TransactionsForTable(transactionDate,transactionCurrency,transactionPrice,transactionPurchase,categoriesList);
+        transList.addTransactionsForTable(newTransaction);
 
 
+    } catch (Exception e) {
+        e.printStackTrace();
 
-        System.out.println(transactionDate + transactionPurchase + transactionPrice + transactionCurrency);
+    }
     }
 
     @FXML
     private void doneButtonPressed(ActionEvent event) {
         System.out.println(transactionInputFilePath);
-        ArrayList transactionsList = new ArrayList(TransactionsController.readFile(transactionInputFilePath));
+        String line = "";
+        String splitBy = ";";
+        System.out.println("here I am I am");
+        try {
+
+            BufferedReader br = new BufferedReader(new FileReader(transactionInputFilePath));
+            while ((line = br.readLine()) != null) {
+                int k = 0;
+                int Id = 0;
+                while ((line = br.readLine()) != null) { //šī daļa (29-32) ļauj izlaist pirmo rindu CSV failā
+                    if (k == 0) {
+                        k++;
+                        continue;
+                    }
+                    String[] transactionData = line.split(splitBy);
+                    System.out.println("Date of payment: " + transactionData[1] + ", Currency: " + transactionData[2] + ", Sum: " + transactionData[3] + " Name: " + transactionData[4]);
+                    String date = transactionData[1];
+                    String currency = transactionData[2];
+                    double price = Double.parseDouble(transactionData[3]);
+                    String purchase = transactionData[4];
+                    Category category = Category.UNSORTED;
+                    Id++;
+                    TransactionsForTable transaction = new TransactionsForTable(date, currency, price, purchase, categoriesList);
+                    transList.addTransactionsForTable(transaction);
+                    System.out.println("here here here");
+                    System.out.println(transList.toString());
+
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Here I am");
+        }
+
         loadScene(event, "Views/TransactionCategories.fxml", 900, 475);
         System.out.println("Here2");
-        for (int i = 0; i < transactionsList.size(); i++) {
-            //System.out.println(transactionsList.get(i).toString());
-//Now I need it to not print that list out here but to get that list in the scene 2
-        }
+
     }
 
     @FXML
@@ -159,6 +186,8 @@ public class TransactionInputController implements Initializable {
 
         loadScene(event, "Views/TransactionCategories.fxml", 900, 475);
         }
+
+
 
     //Handle switching between fxml file scenes
     private void loadScene(ActionEvent event, String location, int width, int height){
