@@ -80,8 +80,10 @@ public class TransactionInputController implements Initializable {
         categoriesList.add("Earnings");
         categoriesList.add("Unsorted");
 
+
+
         transList = new TransactionsForTableList();
-        TransactionsForTable newTrans1 = new TransactionsForTable("22.03.23", "GBP", 34d, "Socks",categoriesList("Colthes","Food"));
+        TransactionsForTable newTrans1 = new TransactionsForTable("22.03.23", "GBP", 34d, "Socks",categoriesList);
         TransactionsForTable newTrans2 = new TransactionsForTable("22.03.23", "EUR", 34d, "Socks",categoriesList);
         transList.addTransactionsForTable(newTrans1);
         transList.addTransactionsForTable(newTrans2);
