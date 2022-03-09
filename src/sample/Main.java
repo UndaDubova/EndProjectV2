@@ -21,12 +21,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        String filename = "C:\\Users\\Unda\\Documents\\Programming stuff\\Java\\AccentureBootcamp\\EndProject\\kontaparskats.csv";
-
-        ArrayList transactionsList = new ArrayList(Transactions.Transactions.TransactionsController.readFile(filename));
-
-        for (int i = 0; i < transactionsList.size(); i++) {
-            //System.out.println(transactionsList.get(i).toString());
         }
     }
-}
+
